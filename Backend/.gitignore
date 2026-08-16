@@ -8,3 +8,6 @@ node_modules/
 dist/
 
 .vscode/
+
+*.db
+billgpt.db
