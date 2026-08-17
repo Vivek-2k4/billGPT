@@ -5,6 +5,7 @@ import api from "../services/api";
 function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -12,6 +13,8 @@ function Signup() {
     e: React.FormEvent
   ) => {
     e.preventDefault();
+
+    setLoading(true);
 
     try {
       const response = await api.post(
@@ -28,12 +31,16 @@ function Signup() {
     } catch (error: any) {
       alert(
         error.response?.data?.detail ||
-          "Signup failed"
+        "Signup failed"
       );
+    } finally {
+      setLoading(false);
     }
-  };
+};
 
   return (
+    <>
+    {loading && <div className="top-loader"></div>}
     <div
   className="min-h-screen flex items-center justify-center px-6"
   style={{
@@ -85,14 +92,26 @@ function Signup() {
           />
 
           <button
-            type="submit"
-            className="w-full bg-black text-white py-4 rounded-xl font-semibold hover:opacity-90 transition"
-          >
-            Sign Up
+              type="submit"
+              disabled={loading}
+              className="
+                w-full
+                bg-black
+                text-white
+                py-4
+                rounded-xl
+                font-semibold
+                hover:opacity-90
+                transition
+                disabled:opacity-70
+              "
+            >
+              {loading ? "Creating Account..." : "Sign Up"}
           </button>
         </form>
       </div>
     </div>
+    </>
   );
 }
 

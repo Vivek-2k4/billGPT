@@ -5,62 +5,71 @@ import api from "../services/api";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
   const handleLogin = async (
-    e: React.FormEvent
-  ) => {
-    e.preventDefault();
+  e: React.FormEvent
+) => {
+  e.preventDefault();
 
-    try {
-      const formData = new URLSearchParams();
+  setLoading(true);
 
-      formData.append("username", email);
-      formData.append("password", password);
+  try {
+    const formData = new URLSearchParams();
 
-      const response = await api.post(
-        "/auth/login",
-        formData,
-        {
-          headers: {
-            "Content-Type":
-              "application/x-www-form-urlencoded",
-          },
-        }
-      );
+    formData.append("username", email);
+    formData.append("password", password);
 
-      localStorage.setItem(
-        "token",
-        response.data.access_token
-      );
+    const response = await api.post(
+      "/auth/login",
+      formData,
+      {
+        headers: {
+          "Content-Type":
+            "application/x-www-form-urlencoded",
+        },
+      }
+    );
 
-      navigate("/search");
-    } catch (error: any) {
-      alert(
-        error.response?.data?.detail ||
-          "Login failed"
-      );
-    }
-  };
+    localStorage.setItem(
+      "token",
+      response.data.access_token
+    );
+
+    navigate("/search");
+
+  } catch (error: any) {
+    alert(
+      error.response?.data?.detail ||
+      "Login failed"
+    );
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
+  <>
+    {loading && <div className="top-loader"></div>}
+
     <div
-  className="min-h-screen flex items-center justify-center px-6"
-  style={{
-    backgroundColor: "#facc15",
-    backgroundImage: `
-      linear-gradient(rgba(255,255,255,0.22) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.22) 1px, transparent 1px),
-      linear-gradient(to bottom, #facc15, #fef9c3)
-    `,
-    backgroundSize: `
-      86px 86px,
-      86px 86px,
-      100% 100%
-    `,
-  }}
->
+      className="min-h-screen flex items-center justify-center px-6"
+      style={{
+        backgroundColor: "#facc15",
+        backgroundImage: `
+          linear-gradient(rgba(255,255,255,0.22) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,0.22) 1px, transparent 1px),
+          linear-gradient(to bottom, #facc15, #fef9c3)
+        `,
+        backgroundSize: `
+          86px 86px,
+          86px 86px,
+          100% 100%
+        `,
+      }}
+    >
       <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-10 w-full max-w-md">
 
         <h1 className="text-4xl font-bold text-center text-slate-900">
@@ -97,13 +106,26 @@ function Login() {
 
           <button
             type="submit"
-            className="w-full bg-black text-white py-4 rounded-xl font-semibold hover:opacity-90 transition"
+            disabled={loading}
+            className="
+              w-full
+              bg-black
+              text-white
+              py-4
+              rounded-xl
+              font-semibold
+              hover:opacity-90
+              transition
+              disabled:opacity-70
+              disabled:cursor-not-allowed
+            "
           >
-            Login
+            {loading ? "Logging in..." : "Login"}
           </button>
         </form>
       </div>
     </div>
+    </>
   );
 }
 

@@ -12,3 +12,40 @@ body,
 body {
   overflow-x: hidden;
 }
+
+.top-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.top-loader::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 35%;
+  background: linear-gradient(
+    90deg,
+    /* #facc15,
+    #fde047,
+    #facc15 */
+    #0000,
+    #635005,
+    #0000
+  );
+  animation: loadingBar 1.1s infinite ease-in-out;
+}
+
+@keyframes loadingBar {
+  0% {
+    left: -35%;
+  }
+
+  100% {
+    left: 100%;
+  }
+}

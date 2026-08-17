@@ -58,7 +58,16 @@ function Navigation() {
 
           <button
             onClick={handleLogout}
-            className="bg-yellow-100 px-4 py-2 rounded-xl hover:bg-orange-400 transition"
+            className="
+              bg-black
+              text-white
+              px-5
+              py-2
+              rounded-full
+              font-semibold
+              hover:opacity-90
+              transition
+            "
           >
             Logout
           </button>
