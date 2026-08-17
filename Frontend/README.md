@@ -1,75 +1,83 @@
-# React + TypeScript + Vite
+# BillGPT 💳
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+BillGPT is a full-stack price comparison application that helps users find the best deals across different platforms and identify the most cost-effective payment method.
 
-Currently, two official plugins are available:
+## Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+**Deployed Application:** https://bill-gpt-psi.vercel.app/
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* User Authentication (Signup/Login with JWT)
+* Search and compare prices across platforms
+* Highlight the cheapest available deal
+* Recommend the best payment method
+* Save comparison history
+* Responsive and modern UI
+* Loading indicators for improved user experience
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Frontend
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+* React
+* TypeScript
+* Vite
+* Tailwind CSS
+* React Router
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Backend
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+* FastAPI
+* SQLAlchemy
+* JWT Authentication
+* SQLite
 
+## How to Run Locally
+
+### Frontend
+
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Backend
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+pip install -r requirements.txt
+uvicorn app.main:app --reload
 ```
+
+## Demo Credentials
+
+You may create a new account using the Signup page or use your own credentials.
+
+## Sample Search Queries
+
+For quick testing, try:
+
+* groceries
+* sony liv subscription
+* milk
+* iphone
+* laptop
+* flights
+* hotel goa
+* pizza
+* mobile recharge
+
+
+These sample queries demonstrate the application's comparison and recommendation features.
+
+## Project Structure
+
+```text
+Frontend/
+Backend/
+```
+
+## Author
+
+Vivek Chandra Arya
+NSUT '26
