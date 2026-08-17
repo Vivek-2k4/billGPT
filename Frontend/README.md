@@ -1,83 +1,49 @@
-# BillGPT 💳
+# BillGPT Frontend 💳
 
-BillGPT is a full-stack price comparison application that helps users find the best deals across different platforms and identify the most cost-effective payment method.
-
-## Live Demo
-
-**Deployed Application:** https://bill-gpt-psi.vercel.app/
-
-## Features
-
-* User Authentication (Signup/Login with JWT)
-* Search and compare prices across platforms
-* Highlight the cheapest available deal
-* Recommend the best payment method
-* Save comparison history
-* Responsive and modern UI
-* Loading indicators for improved user experience
+Frontend application for BillGPT, a price comparison platform that helps users find the best deals and payment options.
 
 ## Tech Stack
-
-### Frontend
 
 * React
 * TypeScript
 * Vite
 * Tailwind CSS
-* React Router
+* React Router DOM
+* Axios
 
-### Backend
+## Run Locally
 
-* FastAPI
-* SQLAlchemy
-* JWT Authentication
-* SQLite
-
-## How to Run Locally
-
-### Frontend
+Install dependencies:
 
 ```bash
 npm install
+```
+
+Start the development server:
+
+```bash
 npm run dev
 ```
 
-### Backend
+Build for production:
 
 ```bash
-pip install -r requirements.txt
-uvicorn app.main:app --reload
+npm run build
 ```
 
-## Demo Credentials
+## Features
 
-You may create a new account using the Signup page or use your own credentials.
+* User Authentication (Login / Signup)
+* Search and compare prices
+* Best deal recommendations
+* Payment method suggestions
+* Comparison history
+* Responsive UI
 
-## Sample Search Queries
+## Live Demo
 
-For quick testing, try:
+https://bill-gpt-psi.vercel.app/
 
-* groceries
-* sony liv subscription
-* milk
-* iphone
-* laptop
-* flights
-* hotel goa
-* pizza
-* mobile recharge
+## Main Documentation
 
-
-These sample queries demonstrate the application's comparison and recommendation features.
-
-## Project Structure
-
-```text
-Frontend/
-Backend/
-```
-
-## Author
-
-Vivek Chandra Arya
-NSUT '26
+For complete project details, architecture, setup instructions, and sample search queries, refer to the repository's root README.md.
